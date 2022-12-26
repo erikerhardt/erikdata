@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 735 852"
+	 style="enable-background:new 0 0 735 852;" xml:space="preserve">
+<style type="text/css">
+	.st0{clip-path:url(#SVGID_00000137817408754782021740000013994471511471989666_);fill:#428BCA;}
+	.st1{clip-path:url(#ellipse173_00000044858861224173067040000006493647080867104683_);}
+	.st2{clip-path:url(#SVGID_00000133528491571697114850000011505524890271687606_);fill:#F9ECC6;}
+	
+		.st3{clip-path:url(#SVGID_00000019675124634828722000000003614557483415577737_);fill:url(#circle163_00000096751065721364115680000009033638050305297074_);}
+	.st4{fill:#3674A8;}
+	.st5{fill:#E6B35A;}
+	.st6{font-family:'Roboto-Regular';}
+	.st7{font-size:48px;}
+	.st8{font-family:'Roboto-Light';}
+	.st9{font-size:172px;}
+	.st10{font-size:250px;}
+	.st11{clip-path:url(#SVGID_00000034780867783911947980000000081345982629131915_);fill:#F9ECC6;}
+</style>
+<g>
+	<defs>
+		<polygon id="SVGID_1_" points="376.4,7.4 735.1,214.5 735.1,636.6 376.4,845 9.7,636.6 9.7,214.5 		"/>
+	</defs>
+	<clipPath id="SVGID_00000103982056889241836340000009705702876258942122_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	
+		<circle id="circle120" style="clip-path:url(#SVGID_00000103982056889241836340000009705702876258942122_);fill:#428BCA;" cx="372.4" cy="437.4" r="442.1"/>
+</g>
+<g>
+	<defs>
+		<ellipse id="ellipse173" cx="366.9" cy="105.8" rx="315.2" ry="234.6"/>
+	</defs>
+	<clipPath id="ellipse173_00000135688927006189052520000008490057088263286701_">
+		<use xlink:href="#ellipse173"  style="overflow:visible;"/>
+	</clipPath>
+	<g style="clip-path:url(#ellipse173_00000135688927006189052520000008490057088263286701_);">
+		<defs>
+			<polygon id="SVGID_00000146460072812551164210000012869701037534738866_" points="370.7,8.2 729.4,215.3 729.4,637.4 
+				370.7,845.8 4,637.4 4,215.3 			"/>
+		</defs>
+		<clipPath id="SVGID_00000139292926760529440110000014026467688891204252_">
+			<use xlink:href="#SVGID_00000146460072812551164210000012869701037534738866_"  style="overflow:visible;"/>
+		</clipPath>
+		
+			<circle id="circle108" style="clip-path:url(#SVGID_00000139292926760529440110000014026467688891204252_);fill:#F9ECC6;" cx="366.7" cy="438.2" r="442.1"/>
+	</g>
+	<g style="clip-path:url(#ellipse173_00000135688927006189052520000008490057088263286701_);">
+		<defs>
+			<polygon id="SVGID_00000087411186438997296240000005647358902418786726_" points="369.5,7.4 728.2,214.5 728.2,636.6 369.5,845 
+				2.8,636.6 2.8,214.5 			"/>
+		</defs>
+		
+			<linearGradient id="SVGID_00000072240437415383188280000015517021067041539746_" gradientUnits="userSpaceOnUse" x1="365.5" y1="7.4" x2="365.5" y2="845">
+			<stop  offset="0" style="stop-color:#428BCA"/>
+			<stop  offset="1" style="stop-color:#5B9AD1"/>
+		</linearGradient>
+		
+			<use xlink:href="#SVGID_00000087411186438997296240000005647358902418786726_"  style="overflow:visible;fill:url(#SVGID_00000072240437415383188280000015517021067041539746_);"/>
+		<clipPath id="SVGID_00000103252149810425990560000010263379160908805522_">
+			<use xlink:href="#SVGID_00000087411186438997296240000005647358902418786726_"  style="overflow:visible;"/>
+		</clipPath>
+		
+			<linearGradient id="circle163_00000031891267146948744780000017565193543501056145_" gradientUnits="userSpaceOnUse" x1="365.5" y1="-4.7" x2="365.5" y2="879.5">
+			<stop  offset="0" style="stop-color:#428BCA"/>
+			<stop  offset="1" style="stop-color:#5B9AD1"/>
+		</linearGradient>
+		
+			<circle id="circle163" style="clip-path:url(#SVGID_00000103252149810425990560000010263379160908805522_);fill:url(#circle163_00000031891267146948744780000017565193543501056145_);" cx="365.5" cy="437.4" r="442.1"/>
+	</g>
+</g>
+<path id="path177" class="st4" d="M705.6,196.2L427.8,35.8L367.5,1l-60.3,34.8L29.4,196.2L0.1,213.1v424.3l29.3,16.9l281.2,162.4
+	l56.9,32.8l56.9-32.8l281.2-162.4l29.3-16.9V213.1L705.6,196.2z M705.6,621.5L367.5,816.7L29.4,621.5V231L367.5,35.8l0,0L705.6,231
+	V621.5z"/>
+<path id="path179" class="st5" d="M367,633.9l0.9-0.9h-0.3L367,633.9z"/>
+<text id="text181" transform="matrix(0.866 -0.5 0.5 0.866 372.3856 804.6518)" class="st6 st7">StatAcumen.com</text>
+<text id="text183" transform="matrix(1 0 0 1 70.7174 469.8354)" class="st8 st9">erikdata</text>
+<text id="text185" transform="matrix(1 0 0 1 284.6753 274)" class="st6 st10">R</text>
+</svg>

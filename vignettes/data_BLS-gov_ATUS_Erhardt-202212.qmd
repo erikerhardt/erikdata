@@ -1,0 +1,299 @@
+---
+title:        BLS.gov ATUS
+subtitle:     Construct dataset
+description: |
+  Constructing a multi-year ATUS file for use in R. Includes aggregated categories.
+abstract: |
+  The American Time Use Survey (ATUS) measures the amount of time people spend doing various activities, such as paid work, childcare, volunteering, and socializing.
+  <https://www.bls.gov/TUS/>
+citation:
+  url: https://www.bls.gov/TUS/
+author:       Erik Erhardt
+date:         last-modified # today, now, last-modified
+date-format:  long          # full, long, medium, short, iso,   https://quarto.org/docs/reference/dates.html
+format:
+  html:
+    theme:                  litera
+    highlight-style:        atom-one
+    page-layout:            full      # article, full   # https://quarto.org/docs/output-formats/page-layout.html
+    toc:                    true
+    toc-depth:              4
+    toc-location:           body      # left, body, right
+    number-sections:        true      # true, false
+    number-depth:           3
+    code-fold:              show      # true (initially hidden), false, show (initially shown)
+    code-tools:                       # menu top-right to show/hide all code
+      toggle:               true
+      caption:              "Code"    # none
+      source:               false
+    code-overflow:          scroll    # scroll, wrap
+    code-block-bg:          true
+    code-block-border-left: "#30B0E0"
+    df-print:               paged     # default, kable, tibble, paged   # https://quarto.org/docs/computations/r.html
+fig-width:                  6
+fig-height:                 4
+execute: # https://quarto.org/docs/computations/execution-options.html, https://quarto.org/docs/computations/r.html
+  cache:    false   # false, true
+  eval:     true    # true, false  Evaluate the code chunk (if false, just echos the code into the output).
+  echo:     true    # true, false  Include the source code in output
+---
+
+<!---
+# Erik's compile commands in R:
+  fn_qmd <- "data_BLS-gov_ATUS_Erhardt-202212.qmd"
+  setwd("D:/Dropbox/UNM/teach/Data/BLS_ATUS")
+  quarto::quarto_render(input = fn_qmd)
+-->
+
+```{r chunk-01, echo=FALSE}
+options(width = 80)
+#options(warn  = -1)
+options(str   = strOptions(list.len = 1e3))
+options(knitr.kable.NA = '') # Display NAs as blanks
+my_seed <- 34567
+set.seed(my_seed)
+```
+
+# Download raw data
+
+12/18/2022 Download date.
+
+Source file links:
+
+* <https://www.bls.gov/TUS/>
+* <https://www.bls.gov/tus/data.htm>
+    * <https://www.bls.gov/tus/other-documentation/howto.htm>
+    * <https://www.bls.gov/tus/atususersguide.pdf>
+    * <https://www.bls.gov/tus/questionnaires.htm>
+
+
+1. Data dictionary
+    * <https://www.bls.gov/tus/dictionaries.htm>
+    * Download to `./BLS_ATUS/data/dictionary`
+    * ATUS Multi-Year Data Dictionaries
+        * The ATUS Multi-Year Data Dictionaries are only for use with the ATUS multi-year microdata files. They should not be used with single-year ATUS microdata files.
+        * __ATUS Multi-Year Interview Data Dictionary__ (PDFs) (2003-2021) (2003-2020)
+            * Describes the Respondent, Roster, Eldercare Roster, Activity, and Who files, and includes names and descriptions of the variables appearing on these files.
+            * <https://www.bls.gov/tus/dictionaries/atusintcodebk0321.pdf>
+            * __MAIN INFORMATION HERE__
+        * __ATUS-CPS Multi-Year Data Dictionary__ (PDFs) (2003-2021) (2003-2020)
+            * Describes the ATUS-CPS file and includes names and descriptions of the variables appearing on the file. Variables on the ATUS-CPS file were collected 2 to 5 months before the ATUS interview.
+            * <https://www.bls.gov/tus/dictionaries/atuscpscodebk0321.pdf>
+        * __ATUS Multi-Year Survey Methodology Dictionary__ (PDFs) (2005-2021) (2005-2020)
+            * Describes the Case history file and includes names and descriptions of the variables appearing on the file.
+            * <https://www.bls.gov/tus/dictionaries/atussmcodebk0521.pdf>
+
+    * ATUS Activity Coding Lexicons and Coding Manuals
+        * <https://www.bls.gov/tus/lexicons.htm>
+        * Multi-Year Activity Coding Lexicons (PDFs) (2003-2021) (2003-2020)
+            * List of ATUS multi-year activity codes. The multi-year ATUS Activity Coding Lexicons contain activity codes unique to the multi-year Activity and Activity Summary files and should not be used with single-year files.
+            * <https://www.bls.gov/tus/lexicons/lexiconnoex0321.pdf>
+
+1. ATUS 2003-2021 Multi-Year Microdata Files
+    * <https://www.bls.gov/tus/data/datafiles-0321.htm>
+    * Instructions for downloading: <https://www.bls.gov/tus/other-documentation/instructions.htm>
+    * Download to `./BLS_ATUS/data`
+    * Multi-Year ATUS Data Dictionaries (PDF Files)
+        * ATUS 2003-2021 Interview Data Dictionary Describes the Respondent, Roster, Activity, Who, and Eldercare Roster files, and includes names and descriptions of the variables appearing on these files. This dictionary should be used only with the multi-year microdata files.
+    * Multi-Year ATUS Data Files
+        *  __ATUS 2003-2021 Respondent file__ (zip) (15.8 MB)
+            * The Respondent file contains information about ATUS respondents, including their labor force status and earnings.
+            * atusresp-0321.zip
+        *  __ATUS 2003-2021 Roster file__ (zip) (3.0 MB)
+            *  The Roster file contains information about household members and nonhousehold children (under 18) of ATUS respondents. It includes information such as age and sex.
+            * atusrost-0321.zip
+        *  __ATUS 2003-2021 Activity summary file__ (zip) (14.6 MB)
+            *  The Activity summary file contains information about the total time each ATUS respondent spent doing each activity on the diary day. Because Activity codes have changed somewhat between 2003 and the present, this file uses activity codes that appear in the 2003-2021 ATUS Coding Lexicon (PDF)
+            * atussum-0321.zip
+
+1. Extract `*.dat` and `*.sas` files
+   * Rename `*.sas` to `*.R` files for editing.
+
+1. Edit `*.R` files to read and format files.
+    * This takes some expertise but is the easiest way to get into R.
+
+## Read and format data with scripts
+
+```{r}
+library(tidyverse)
+
+# read and format source files
+#   and code categorical levels as NA: "Blank", "Don't Know", "Refused"
+source(file = "./R/atusresp_0321.R")
+#source(file = "./R/atusrost_0321.R")
+source(file = "./R/atussum_0321.R" )
+
+# aggregate Major categories, First and second-tier categories
+source(file = "./R/atussum_0321_aggregate.R" )
+
+# Join together into a single dataset
+dat_atus <-
+  dat_atusresp_0321 %>%
+  dplyr::full_join(
+    dat_atussum_0321_agg_0 %>%
+    dplyr::full_join(
+      dat_atussum_0321_agg_1
+    , by = "TUCASEID"
+    ) %>%
+    dplyr::full_join(
+      dat_atussum_0321
+    , by = "TUCASEID"
+    )
+  ) %>%
+  # reorder some variables
+  dplyr::select(
+    TUCASEID
+  , TULINENO
+  , TESEX
+  , TEAGE
+  , GEMETSTA
+  , GTMETSTA
+  , PEEDUCA
+  , PEHSPNON
+  , PTDTRACE
+  , tidyselect::everything()
+  )
+
+# extract table of labels
+labels_dat_atus <-
+  labelled::var_label(dat_atus) %>%
+  dplyr::bind_rows() %>%
+  t() %>%
+  tibble::as_tibble(rownames = "Var") %>%
+  dplyr::rename(Label = V1)
+
+# remove original files
+rm(dat_atusresp_0321)
+rm(dat_atussum_0321_agg_0 )
+rm(dat_atussum_0321_agg_1 )
+rm(dat_atussum_0321 )
+rm(labels_dat_atusresp_0321)
+rm(labels_dat_atussum_0321_agg_0 )
+rm(labels_dat_atussum_0321_agg_1 )
+rm(labels_dat_atussum_0321 )
+
+# size of data
+dim(dat_atus)
+object.size(dat_atus) %>% format(units = "MB")
+
+# list of names
+names(dat_atus)
+
+# list of labels
+labels_dat_atus %>% print(n = Inf)
+```
+
+## Save formatted data
+
+```{r}
+rm(list = setdiff(ls(), c("dat_atus", "labels_dat_atus")))
+
+fn_dat <- "atus_0321_Erhardt-202212.RData"
+
+save.image(
+    file      = fn_dat
+  , compress  = TRUE
+  )
+
+# load(fn_dat)
+```
+
+
+## Create codebook
+
+```{r codebook}
+#library(dataReporter)
+dataReporter::makeCodebook(
+    dat_atus
+  , reportTitle = "ATUS 2003-2021 Multi-Year Microdata Files; joined Respondent and Activity summary files; with aggregated categories; version Erhardt-202212"
+  , replace     = TRUE
+  , openResult  = FALSE
+  , codebook    = TRUE
+  , output      = "html"  # "pdf"
+  , maxProbVals = 20
+  )
+```
+
+# Reference
+
+## Outline of formatting `*.R` scripts
+
+Start with `*.sas` formatting files, rename to `*.R`, and make the following modifications.
+
+```{r}
+#| eval: false
+
+# Read data
+dat_atusresp_0321 <-
+  readr::read_csv(
+    file = "./data/atusresp_0321.dat"
+  )
+
+# Remove attributes
+attr(dat_atusresp_0321, "spec") <- NULL
+
+# (move labeling to the end)
+
+# Label factor levels
+dat_atusresp_0321 <-
+  dat_atusresp_0321 %>%
+  dplyr::mutate(
+    TEABSRSN =
+      TEABSRSN %>%
+      factor(
+        levels = c(-1:-3, 1:14)
+      , labels =
+          c(
+            "Blank"
+          , "Don't Know"
+          , "Refused"
+          , "On layoff (temporary or indefinite)"
+          , "Slack work/business conditions"
+          , "Waiting for a new job to begin"
+          , "Vacation/personal days"
+          , "Own illness/injury/medical problems"
+          , "Childcare problems"
+          , "Other family/personal obligation"
+          , "Maternity/paternity leave"
+          , "Labor dispute"
+          , "Weather affected job"
+          , "School/training"
+          , "Civic/military duty"
+          , "Does not work in the business"
+          , "Other"
+          )
+      )
+
+  , TEERNHRY =
+      TEERNHRY %>%
+      factor(
+        levels = c(-1:-3, 1:2)
+      , labels =
+          c(
+            "Blank"
+          , "Don't Know"
+          , "Refused"
+          , "Paid hourly"
+          , "Not paid hourly"
+          )
+      )
+
+  # ...
+
+  ) # mutate
+
+# Label variables
+labels_dat_atusresp_0321 <-
+  tibble::tribble(
+    ~Var          , ~Label
+  , "TEABSRSN"    , "Edited: what was the main reason you were absent from your job last week?"
+  , "TEERN"       , "Edited: total weekly overtime earnings (2 implied decimals)"
+  # ...
+  )
+
+# Apply labels
+for (i_var in seq_along(labels_dat_atusresp_0321[[ "Var" ]])) {
+  labelled::var_label(dat_atusresp_0321[[ labels_dat_atusresp_0321[[ "Var" ]][i_var] ]]) <-
+    labels_dat_atusresp_0321[[ "Label" ]][i_var]
+}
+```

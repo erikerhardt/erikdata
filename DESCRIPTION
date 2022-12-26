@@ -1,0 +1,28 @@
+Package: erikdata
+Type: Package
+Title: Erik Erhardt's data library
+Version: 0.0.01
+Date: 2022-12-22
+Authors@R:
+    c(person(
+      given = "Erik"
+    , family = "Erhardt"
+    , role = c("aut", "cre")
+    , email = "erike@statacumen.com"
+    , comment = c(ORCID = "0000-0002-9817-4011")
+    ))
+Description: Solving common complex data analysis workflows
+License: MIT + file LICENSE
+URL: https://github.com/erikerhardt/erikdata
+BugReports: https://github.com/erikerhardt/erikdata/issues
+Encoding: UTF-8
+RoxygenNote: 7.2.3
+Roxygen: list(markdown = TRUE)
+VignetteBuilder: knitr
+NeedsCompilation: no
+LazyData: true
+Depends:
+    R (>= 4.2.0)
+Imports:
+    tibble
+Suggests:
