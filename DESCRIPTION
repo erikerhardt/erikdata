@@ -24,5 +24,10 @@ LazyData: true
 Depends:
     R (>= 4.2.0)
 Imports:
+    knitr,
+    cli,
+    crayon,
+    magrittr,
+    purrr,
     tibble
 Suggests:

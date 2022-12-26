@@ -11,7 +11,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# erikdata <a href='https://github.com/erikerhardt/erikdata'><img src='man/figures/erikdata.png' align="right" height="138.5" /></a>
+# erikdata <a href='https://github.com/erikerhardt/erikdata'><img src='images/erikdata.png' align="right" height="138.5" /></a>
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/erikerhardt/erikdata/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/erikerhardt/erikdata/actions/workflows/check-standard.yaml)
